@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fake-Real Detector — Scam & Internship Offer Verifier</title>
+  <link rel="stylesheet" href="/dist/output.css">
+</head>
+<body class="bg-gray-50 min-h-screen text-gray-900 antialiased">
+  <div class="max-w-3xl mx-auto px-4 py-12">
+    <!-- Header -->
+    <header class="text-center mb-8">
+      <h1 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+        Fake-Real Detector
+      </h1>
+      <p class="mt-2 text-base text-gray-600 max-w-xl mx-auto">
+        Analyze internship offers, scholarship notices, and viral messages for scam patterns and positive trust signals.
+      </p>
+    </header>
+
+    <!-- Main Card -->
+    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 sm:p-8">
+      <label for="content-input" class="block text-sm font-semibold text-gray-700 mb-2">
+        Enter Offer, Message Text, or URL
+      </label>
+      <textarea
+        id="content-input"
+        rows="5"
+        placeholder="Paste a job post, internship offer, scholarship message, or link here..."
+        class="w-full p-3.5 text-gray-800 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-sm leading-relaxed"
+      ></textarea>
+
+      <!-- Action Row -->
+      <div class="mt-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <span class="text-xs text-gray-500">
+          Tip: Includes automated detection for upfront fees, unrealistic pay, and official domain checks.
+        </span>
+        <button
+          id="check-btn"
+          type="button"
+          class="w-full sm:w-auto px-6 py-2.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-medium text-sm rounded-lg transition-colors flex items-center justify-center space-x-2 shadow-sm disabled:opacity-60 disabled:cursor-not-allowed"
+        >
+          <span id="btn-text">Check Offer</span>
+        </button>
+      </div>
+
+      <!-- Results Container (Hidden by default) -->
+      <section id="results-container" class="mt-8 border-t border-gray-200 pt-6 hidden" aria-live="polite">
+        <!-- Dynamic Score Badge -->
+        <div class="flex items-center space-x-3">
+          <span class="text-sm font-medium text-gray-500">Trust Score:</span>
+          <span id="score-badge" class="inline-flex items-center px-3 py-1 rounded-full text-sm font-bold border">
+            --
+          </span>
+          <span id="verdict-label" class="text-sm font-semibold"></span>
+        </div>
+
+        <!-- Summary Paragraph -->
+        <p id="summary-text" class="text-gray-700 mt-3 text-sm leading-relaxed"></p>
+
+        <!-- Two-Column Findings Grid -->
+        <div class="mt-6">
+          <h3 class="text-sm font-bold text-gray-900 uppercase tracking-wider mb-3">
+            Assessment Breakdown
+          </h3>
+          <div id="findings-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Dynamic Reason & Evidences populated by app.js -->
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-8 text-center text-xs text-gray-400">
+      Built for DevPost: Build With AI Hackathon &bull; Open Source Proof of Concept
+    </footer>
+  </div>
+
+  <script type="module" src="/dist/app.js"></script>
+</body>
+</html>

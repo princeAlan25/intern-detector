@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "rootDir": "./src",
+    "outDir": "./public/dist",
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "include": ["src/client/**/*", "src/types.ts"]
+}
