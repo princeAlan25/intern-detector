@@ -5,3 +5,9 @@
 .env
 .env.*
 !.env.example
+
+# Dependencies & Build artifacts
+node_modules/
+public/dist/
+dist/
+*.log
