@@ -6,9 +6,11 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "skipLibCheck": true,
-    "outDir": "./dist",
-    "rootDir": "./src"
+    "skipLibCheck": true
   },
-  "include": ["src/**/*"]
+  "include": [
+    "backend/src/**/*",
+    "frontend/src/**/*",
+    "scripts/**/*"
+  ]
 }
