@@ -1,4 +1,4 @@
----
+﻿---
 doc: checklist
 status: approved
 ---
@@ -51,23 +51,26 @@ Build mode: learn
 
 ## Hands-on Checkpoints
 
-- [x] Early usable behavior explored — Slice 2 (UI input surface and backend connectivity)
-- [ ] Final kick-the-tires exploration and feedback completed — Slice 4
+- [x] Early usable behavior explored - Slice 2 (UI input surface and backend connectivity)
+- [x] Final kick-the-tires exploration and feedback completed - Slice 4
 
 ## Final Review
 
-- [ ] Final review complete — feedback resolved and learner confirms ready to ship
+- [x] Final review complete - feedback resolved and learner confirms ready to ship
 
 ## Code Tour and App Map
 
-- [ ] Learning activity complete — guided route, focused alternative, prior practice connected, or brief recap
-- [ ] Optional edit and transfer reflection addressed — offered/declined/already covered/not applicable as appropriate
-- [ ] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse
+- [x] Learning activity complete - guided route, focused alternative, prior practice connected, or brief recap
+- [x] Optional edit and transfer reflection addressed - offered/declined/already covered/not applicable as appropriate
+- [x] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse
 
-Activity and evidence: [to be recorded upon completion]
-Route and stops: [to be recorded upon completion]
-Edit outcome: [to be recorded upon completion]
-Reflection: [to be recorded upon completion]
-Activity mode: [to be recorded upon completion]
+Activity and evidence: Focused alternative connecting the learner's desired learning outcome (understanding structured non-vibe architecture) to the Layered Strategy Pattern, OpenRouter fallback, and 32 unit/integration tests.
+Route and stops: Stop 1: src/client/controller.ts (Silent Empty Guard) -> Stop 2: src/analyzer/orchestrator.ts (Strategy priority & fallback) -> Stop 3: src/analyzer/rules.ts (Deterministic pattern matching & evidence extraction).
+Edit outcome: Not applicable - learner confirmed implementation meets requirements without changes.
+Reflection: Offered in wrap-up summary.
+Activity mode: learn
 
 ## Revisions
+
+- Switched AI engine strategy to OpenRouter API (OpenAI-compatible chat completions) with resilient heuristic fallback.
+- Implemented native fetch for OpenRouter communication to prevent Node.js 24 Windows OpenSSL cipher decompression issues with large SDK tarballs.
