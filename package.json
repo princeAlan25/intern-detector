@@ -9,7 +9,8 @@
     "build:css": "tailwindcss -i src/client/style.css -o public/dist/output.css",
     "build:js": "esbuild src/client/app.ts --bundle --outfile=public/dist/app.js --format=esm --sourcemap",
     "build": "npm run build:css && npm run build:js",
-    "test": "node --import tsx --test \"src/**/*.test.ts\""
+    "test": "node --import tsx --test \"src/**/*.test.ts\"",
+    "test:openrouter": "tsx scripts/test-openrouter.ts"
   },
   "repository": {
     "type": "git",
