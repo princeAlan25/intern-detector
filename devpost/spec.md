@@ -187,7 +187,7 @@ intern-detector/
 - **`express`** (`^4.19.0`) & **`@types/express`**: Server framework and type definitions.
 - **`tailwindcss`** (`^3.4.0` or `^4.0.0`): CSS utility styling framework.
 - **`dotenv`** (`^16.4.0`): Local environment variable loader.
-- **`openai`**: OpenRouter API client (OpenAI-compatible SDK pointed at `https://openrouter.ai/api/v1`) with graceful fallback.
+- **OpenRouter Client**: Direct API client (via native `fetch` to `https://openrouter.ai/api/v1`) with graceful fallback.
 
 ---
 

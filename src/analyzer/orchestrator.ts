@@ -1,7 +1,12 @@
 import { AnalysisResponse, Finding, Verdict } from '../types.js';
 import { evaluateRules } from './rules.js';
+import { analyzeWithOpenRouter, OpenRouterConfig } from './openrouter.js';
 
-export function analyzeContent(content: string): AnalysisResponse {
+/**
+ * Deterministic heuristic rule-based analysis.
+ * Always available offline with zero external dependencies.
+ */
+export function analyzeContentWithRules(content: string): AnalysisResponse {
   const matches = evaluateRules(content);
 
   const redFlags = matches.filter(m => m.type === 'red_flag');
@@ -55,4 +60,30 @@ export function analyzeContent(content: string): AnalysisResponse {
     summary,
     findings
   };
+}
+
+/**
+ * Main analysis orchestrator.
+ * Attempts AI contextual deep analysis via OpenRouter if OPENROUTER_API_KEY is configured,
+ * with automated, seamless fallback to the local heuristic rules engine.
+ */
+export async function analyzeContent(
+  content: string,
+  openRouterConfig?: OpenRouterConfig
+): Promise<AnalysisResponse> {
+  const apiKey = openRouterConfig?.apiKey ?? process.env.OPENROUTER_API_KEY;
+
+  if (apiKey && apiKey.trim() !== '') {
+    try {
+      const aiResponse = await analyzeWithOpenRouter(content, openRouterConfig);
+      if (aiResponse) {
+        return aiResponse;
+      }
+    } catch (err) {
+      console.warn('OpenRouter analysis failed, engaging heuristic rules fallback:', err);
+    }
+  }
+
+  // Resilient fallback to deterministic rule engine
+  return analyzeContentWithRules(content);
 }

@@ -2,9 +2,9 @@ import { test } from 'node:test';
 import assert from 'node:assert';
 import { analyzeContent } from './orchestrator.js';
 
-test('analyzeContent returns High Risk verdict and low trustScore for blatant scam pitch', () => {
+test('analyzeContent returns High Risk verdict and low trustScore for blatant scam pitch', async () => {
   const scamOffer = "Urgent! Work from home as an executive intern and earn $900 per day. Pay $100 registration fee and reach out via Telegram @hiring_team.";
-  const result = analyzeContent(scamOffer);
+  const result = await analyzeContent(scamOffer);
 
   assert.ok(result.trustScore <= 4, `Expected trust score <= 4, got ${result.trustScore}`);
   assert.strictEqual(result.verdict, 'High Risk');
@@ -16,9 +16,9 @@ test('analyzeContent returns High Risk verdict and low trustScore for blatant sc
   }
 });
 
-test('analyzeContent returns Safe verdict and high trustScore for legitimate university program', () => {
+test('analyzeContent returns Safe verdict and high trustScore for legitimate university program', async () => {
   const legitOffer = "Apply to the Stanford AI Undergraduate Fellowship at https://cs.stanford.edu/admissions/fellowship via https://boards.greenhouse.io/stanford-research";
-  const result = analyzeContent(legitOffer);
+  const result = await analyzeContent(legitOffer);
 
   assert.ok(result.trustScore >= 8, `Expected trust score >= 8, got ${result.trustScore}`);
   assert.strictEqual(result.verdict, 'Safe');
@@ -26,9 +26,9 @@ test('analyzeContent returns Safe verdict and high trustScore for legitimate uni
   assert.ok(result.findings.length >= 1);
 });
 
-test('analyzeContent returns Caution verdict for neutral or ambiguous content', () => {
+test('analyzeContent returns Caution verdict for neutral or ambiguous content', async () => {
   const neutralText = "Looking for someone to help organize spreadsheet files this weekend. Let me know if interested.";
-  const result = analyzeContent(neutralText);
+  const result = await analyzeContent(neutralText);
 
   assert.ok(result.trustScore >= 5 && result.trustScore <= 7, `Expected score between 5 and 7, got ${result.trustScore}`);
   assert.strictEqual(result.verdict, 'Caution');

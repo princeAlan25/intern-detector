@@ -23,7 +23,7 @@ app.get('/health', (_req: Request, res: Response) => {
 });
 
 // Main analysis endpoint
-app.post('/api/analyze', (req: Request<{}, {}, AnalysisRequest>, res: Response) => {
+app.post('/api/analyze', async (req: Request<{}, {}, AnalysisRequest>, res: Response) => {
   const { content } = req.body;
 
   if (typeof content !== 'string' || content.trim() === '') {
@@ -32,7 +32,7 @@ app.post('/api/analyze', (req: Request<{}, {}, AnalysisRequest>, res: Response) 
   }
 
   try {
-    const analysis = analyzeContent(content);
+    const analysis = await analyzeContent(content);
     res.status(200).json(analysis);
   } catch (error) {
     console.error('Analysis error:', error);
