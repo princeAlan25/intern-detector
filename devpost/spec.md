@@ -148,35 +148,54 @@ export interface AnalysisResponse {
 
 ---
 
-## File Structure
+## File Structure (Monorepo)
 
 ```
 intern-detector/
-├── public/
-│   ├── index.html        # Single-page interface markup with Tailwind classes
+├── backend/                  # Isolated Backend Service (@intern-detector/backend)
+│   ├── src/
+│   │   ├── analyzer/
+│   │   │   ├── orchestrator.ts     # Analysis orchestrator (OpenRouter + Rules fallback)
+│   │   │   ├── rules.ts            # Heuristic scam and legitimacy pattern library
+│   │   │   ├── openrouter.ts       # OpenRouter API client wrapper
+│   │   │   ├── rules.test.ts       # Pattern matching unit tests
+│   │   │   ├── orchestrator.test.ts# Scoring & verdict unit tests
+│   │   │   └── openrouter.test.ts  # AI integration & fallback tests
+│   │   ├── server.ts               # Express API (/api/analyze, /health, CORS)
+│   │   ├── server.test.ts          # Server endpoint integration tests
+│   │   └── types.ts                # Backend data contracts & DTOs
+│   ├── package.json          # Backend-specific dependencies (express, cors, dotenv)
+│   └── tsconfig.json         # Backend TypeScript configuration
+├── frontend/                 # Isolated Frontend App (@intern-detector/frontend)
+│   ├── src/
+│   │   ├── controller.ts           # Client controller with Silent Empty Guard
+│   │   ├── controller.test.ts      # Controller input guard tests
+│   │   ├── presenter.ts            # Dynamic DOM presenter (badges & 2-column grid)
+│   │   ├── presenter.test.ts       # Badge theme & evidence tag unit tests
+│   │   ├── presenter.dom.test.ts   # DOM presentation integration tests
+│   │   ├── api.ts                  # HTTP client calling backend /api/analyze
+│   │   ├── style.css               # Tailwind CSS utility stylesheet
+│   │   ├── app.ts                  # Client entrypoint and DOM binder
+│   │   └── types.ts                # Frontend data models & contracts
 │   ├── dist/
-│   │   ├── output.css    # Compiled Tailwind stylesheet
-│   │   └── app.js        # Compiled client script
-├── src/
-│   ├── client/
-│   │   └── app.ts        # Client-side input listener and DOM renderer
-│   ├── analyzer.ts       # Main analysis orchestrator (rules + AI)
-│   ├── rules.ts          # Heuristic scam and legitimacy pattern library
-│   ├── openrouter.ts      # OpenRouter API client wrapper with fallback
-│   ├── types.ts          # Shared TypeScript interfaces
-│   └── server.ts         # Express application entrypoint
-├── resources/            # Architecture diagrams and design assets
-│   └── mermaid-diagram.svg
-├── devpost/              # Hackathon documentation
+│   │   ├── output.css              # Compiled Tailwind stylesheet
+│   │   └── app.js                  # Bundled client script
+│   ├── index.html            # Main interface markup
+│   ├── package.json          # Frontend-specific dependencies & build scripts
+│   └── tsconfig.json         # Frontend TypeScript configuration
+├── scripts/
+│   └── test-openrouter.ts    # Direct OpenRouter connection diagnostic script
+├── devpost/                  # Hackathon documentation
 │   ├── learner-profile.md
 │   ├── scope.md
 │   ├── prd.md
-│   └── spec.md
-├── .gitignore            # Keeps .env, node_modules, dist/ out of git
-├── package.json          # Node dependencies and npm scripts
-├── tsconfig.json         # TypeScript compiler configuration
-├── tailwind.config.js    # Tailwind CSS configuration
-└── README.md             # Project documentation and setup instructions
+│   ├── spec.md
+│   ├── checklist.md
+│   └── app-map.html
+├── .env.example              # Secret-free environment template
+├── .gitignore                # Excludes credentials and build artifacts
+├── package.json              # Monorepo root workspace orchestrator
+└── README.md                 # Project documentation and setup instructions
 ```
 
 ---

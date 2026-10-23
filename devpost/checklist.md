@@ -1,4 +1,4 @@
-﻿---
+---
 doc: checklist
 status: approved
 ---
@@ -74,3 +74,4 @@ Activity mode: learn
 
 - Switched AI engine strategy to OpenRouter API (OpenAI-compatible chat completions) with resilient heuristic fallback.
 - Implemented native fetch for OpenRouter communication to prevent Node.js 24 Windows OpenSSL cipher decompression issues with large SDK tarballs.
+- Migrated codebase to an npm workspaces monorepo with completely isolated `backend/` and `frontend/` packages, adding CORS support for cross-service calls and unified root orchestration scripts.

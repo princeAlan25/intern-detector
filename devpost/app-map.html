@@ -128,7 +128,7 @@
           <!-- User / DOM -->
           <rect x="20" y="80" width="120" height="60" rx="8" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
           <text x="80" y="105" text-anchor="middle" font-weight="bold" font-size="12" fill="#1e1b4b">Browser View</text>
-          <text x="80" y="125" text-anchor="middle" font-size="10" fill="#4338ca">public/index.html</text>
+          <text x="80" y="125" text-anchor="middle" font-size="10" fill="#4338ca">frontend/index.html</text>
 
           <!-- Controller -->
           <rect x="180" y="80" width="130" height="60" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
@@ -175,19 +175,19 @@
       <p>Follow a user submitting text through these three exact files:</p>
 
       <div class="route-stop">
-        <h3>Stop 1: The Input & Empty Guard — <code>src/client/controller.ts</code></h3>
+        <h3>Stop 1: The Input & Empty Guard — <code>frontend/src/controller.ts</code></h3>
         <p>Function: <code>validateAndSanitizeInput()</code> and <code>initController()</code></p>
         <p>When the user clicks "Check Offer", the controller intercepts the submission. If the text is empty or whitespace-only, it halts silently without firing network requests or displaying errors. If valid, it disables the button and calls the API service.</p>
       </div>
 
       <div class="route-stop">
-        <h3>Stop 2: The Orchestration & Fallback — <code>src/analyzer/orchestrator.ts</code></h3>
+        <h3>Stop 2: The Orchestration & Fallback — <code>backend/src/analyzer/orchestrator.ts</code></h3>
         <p>Function: <code>analyzeContent()</code></p>
         <p>The Express route forwards the request payload to the orchestrator. If an <code>OPENROUTER_API_KEY</code> is present in <code>.env</code>, it requests contextual reasoning from OpenRouter. If no key is set or the network is unavailable, it automatically executes the local rule engine without throwing any unhandled errors.</p>
       </div>
 
       <div class="route-stop">
-        <h3>Stop 3: Pattern Detection & Evidence Extraction — <code>src/analyzer/rules.ts</code></h3>
+        <h3>Stop 3: Pattern Detection & Evidence Extraction — <code>backend/src/analyzer/rules.ts</code></h3>
         <p>Function: <code>evaluateRules()</code> and individual rules (e.g. <code>upfrontFeeRule</code>, <code>eduDomainRule</code>)</p>
         <p>Each rule evaluates the input using deterministic regexes. When a pattern matches, it produces a <code>Finding</code> containing an explanation string and an array of exact verbatim quote snippets (<code>evidences: string[]</code>) extracted directly from the user's input.</p>
       </div>
@@ -197,10 +197,10 @@
     <section class="card">
       <h2>4. To Change This, Start Here</h2>
       <ul>
-        <li><strong>Add a new scam detection rule</strong>: Go to <code>src/analyzer/rules.ts</code>, define a new <code>Rule</code> object with regex matching and score impact, and add it to the <code>activeRules</code> array. Add a test in <code>src/analyzer/rules.test.ts</code>.</li>
-        <li><strong>Change the UI colors or typography</strong>: Edit <code>src/client/style.css</code> or utility classes in <code>public/index.html</code>, then run <code>npm run build:css</code>.</li>
+        <li><strong>Add a new scam detection rule</strong>: Go to <code>backend/src/analyzer/rules.ts</code>, define a new <code>Rule</code> object with regex matching and score impact, and add it to the <code>activeRules</code> array. Add a test in <code>backend/src/analyzer/rules.test.ts</code>.</li>
+        <li><strong>Change the UI colors or typography</strong>: Edit <code>frontend/src/style.css</code> or utility classes in <code>frontend/index.html</code>, then run <code>npm run build</code>.</li>
         <li><strong>Switch OpenRouter AI model</strong>: Set <code>OPENROUTER_MODEL=meta-llama/llama-3.3-70b-instruct</code> or another model in your <code>.env</code> file.</li>
-        <li><strong>Modify score badge thresholds</strong>: Edit <code>getBadgeTheme()</code> in <code>src/client/presenter.ts</code>.</li>
+        <li><strong>Modify score badge thresholds</strong>: Edit <code>getBadgeTheme()</code> in <code>frontend/src/presenter.ts</code>.</li>
       </ul>
     </section>
 
@@ -216,7 +216,7 @@
       <details>
         <summary>How to run tests and rebuild</summary>
         <p style="margin-top: 0.5rem;">
-          Run all 32 unit and integration tests:
+          Run all 30 unit and integration tests:
           <br><code>npm test</code>
           <br><br>
           Compile CSS and client bundle:
