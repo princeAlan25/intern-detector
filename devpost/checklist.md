@@ -29,7 +29,7 @@ Build mode: learn
   Learner check: Open `http://localhost:3000` in your browser, click "Check" with the input empty to verify it silently does nothing, then type a sample phrase and click "Check" to see the button show "Checking...".
   Commit: `feat: implement centered web UI with tailwind and empty input guard`
 
-- [ ] **3. Dynamic results display: color-coded score, summary, and two-column evidence grid**
+- [x] **3. Dynamic results display: color-coded score, summary, and two-column evidence grid**
   Becomes usable: The complete end-to-end user loop. When analysis finishes, the results container appears smoothly below the input box with a modest color-coded score badge (emerald for safe, amber for caution, red for high risk), a clear summary paragraph, and a two-column responsive grid showing reasons on the left and evidence tags on the right.
   Why now: Completes the full core journey defined in the PRD, making the application fully functional for both scam detection and legitimate verification.
   PRD ref: `prd.md > The Core Journey`, `prd.md > Features and Behavior > 1 & 2`, `prd.md > Look and Feel`
@@ -51,7 +51,7 @@ Build mode: learn
 
 ## Hands-on Checkpoints
 
-- [ ] Early usable behavior explored — Slice 2 (UI input surface and backend connectivity)
+- [x] Early usable behavior explored — Slice 2 (UI input surface and backend connectivity)
 - [ ] Final kick-the-tires exploration and feedback completed — Slice 4
 
 ## Final Review
