@@ -17,7 +17,7 @@ The application follows a decoupled **Client-Server Architecture** designed for 
                              └──(render HTML)── [ DOM Presenter ] <──(typed response)── [ Analyzer Orchestrator ]
                                                                                                ╱         ╲
                                                                                               ▼           ▼
-                                                                                       [Heuristics]    [Gemini API]
+                                                                                       [Heuristics]    [OpenRouter API]
 ```
 
 ---
@@ -45,15 +45,15 @@ src/
     │                               urgency triggers, free email domains, and verified institutional domains).
     │                               Always available offline with zero API key dependencies.
     │
-    └── gemini.ts               ──> [AI Model Strategy Engine]
-                                    Google Gemini client that performs contextual deep analysis and returns
+    └── openrouter.ts            ──> [AI Model Strategy Engine]
+                                    OpenRouter API client that performs contextual deep analysis and returns
                                     structured JSON matching our data contract. Gracefully falls back to rules.
 ```
 
 #### Key Backend Principles:
-1. **Decoupled Engines**: The `server.ts` does not know whether rules or Gemini ran; it only deals with the `Analyzer Orchestrator`.
+1. **Decoupled Engines**: The `server.ts` does not know whether rules or OpenRouter ran; it only deals with the `Analyzer Orchestrator`.
 2. **Strategy Pattern**: The orchestrator can execute the AI model, fall back to heuristic rules, or blend both without affecting the client API contract.
-3. **Fail-Safe Operation**: If Gemini is offline, rate-limited, or unconfigured, the system seamlessly returns rule-based analysis.
+3. **Fail-Safe Operation**: If OpenRouter is offline, rate-limited, or unconfigured, the system seamlessly returns rule-based analysis.
 
 ---
 
@@ -129,11 +129,11 @@ We build and verify one slice at a time. Each slice must be mechanically verifie
 
 ---
 
-### Slice 4: Gemini AI Strategy & Resilient Fallback
-- **Focus**: AI Strategy Integration (`src/analyzer/gemini.ts`).
+### Slice 4: OpenRouter AI Strategy & Resilient Fallback
+- **Focus**: AI Strategy Integration (`src/analyzer/openrouter.ts`).
 - **Files**:
-  - `src/analyzer/gemini.ts` (Google Gemini API integration with structured JSON prompting).
-  - Update `src/analyzer/orchestrator.ts` (Integrate Gemini call with automated try/catch fallback to rules).
+  - `src/analyzer/openrouter.ts` (OpenRouter API integration with structured JSON prompting).
+  - Update `src/analyzer/orchestrator.ts` (Integrate OpenRouter call with automated try/catch fallback to rules).
 - **Mechanical Verification**: Test analysis with API key (or mock) and without key, verifying identical schema compliance in all conditions.
 - **Learner Check**: Test varied inputs with and without `.env` key to confirm seamless resilience.
 

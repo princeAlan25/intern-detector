@@ -64,9 +64,9 @@ sequenceDiagram
   - *Rationale*: Utility-first CSS for clean modern typography, responsive cards, and dynamic color-coded badges without writing bloated custom CSS.
   - [Tailwind CSS Documentation](https://tailwindcss.com/)
 - **Frontend Markup & Scripts**: Semantic HTML5 and TypeScript compiled to client JavaScript.
-- **AI & Analysis Engine**: Node.js service using Google Gemini API (`@google/genai` or `@google/generative-ai`) with a structured local heuristic engine as an automated fallback.
-  - *Rationale*: Guarantees the app works 100% reliably in offline or keyless environments during demo recording while leveraging AI capabilities when an API key is present.
-  - [Google Gemini API Documentation](https://ai.google.dev/docs)
+- **AI & Analysis Engine**: Node.js service using the **OpenRouter API** (via the `openai` SDK pointed at `https://openrouter.ai/api/v1`) with a structured local heuristic engine as an automated fallback.
+  - *Rationale*: Guarantees the app works 100% reliably in offline or keyless environments during demo recording while leveraging AI capabilities when an API key is present. OpenRouter provides access to multiple models through a single API.
+  - [OpenRouter API Documentation](https://openrouter.ai/docs)
 - **Environment Management**: `dotenv` for reading `.env` variables safely.
 
 ---
@@ -74,7 +74,7 @@ sequenceDiagram
 ## Where It Runs and How Someone Tries It
 
 - **Runtime**: Runs locally as a Node.js TypeScript web server.
-- **Environment**: Node.js installed; optional `.env` file with `GEMINI_API_KEY`.
+- **Environment**: Node.js installed; optional `.env` file with `OPENROUTER_API_KEY`.
 - **How to Start**:
   ```bash
   npm install
@@ -162,7 +162,7 @@ intern-detector/
 │   │   └── app.ts        # Client-side input listener and DOM renderer
 │   ├── analyzer.ts       # Main analysis orchestrator (rules + AI)
 │   ├── rules.ts          # Heuristic scam and legitimacy pattern library
-│   ├── gemini.ts         # Gemini API client wrapper with fallback
+│   ├── openrouter.ts      # OpenRouter API client wrapper with fallback
 │   ├── types.ts          # Shared TypeScript interfaces
 │   └── server.ts         # Express application entrypoint
 ├── resources/            # Architecture diagrams and design assets
@@ -187,7 +187,7 @@ intern-detector/
 - **`express`** (`^4.19.0`) & **`@types/express`**: Server framework and type definitions.
 - **`tailwindcss`** (`^3.4.0` or `^4.0.0`): CSS utility styling framework.
 - **`dotenv`** (`^16.4.0`): Local environment variable loader.
-- **`@google/genai` or `@google/generative-ai`**: Google Gemini API client with graceful fallback.
+- **`openai`**: OpenRouter API client (OpenAI-compatible SDK pointed at `https://openrouter.ai/api/v1`) with graceful fallback.
 
 ---
 
