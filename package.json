@@ -6,6 +6,9 @@
   "scripts": {
     "start": "tsx src/server.ts",
     "dev": "tsx watch src/server.ts",
+    "build:css": "tailwindcss -i src/client/style.css -o public/dist/output.css",
+    "build:js": "esbuild src/client/app.ts --bundle --outfile=public/dist/app.js --format=esm --sourcemap",
+    "build": "npm run build:css && npm run build:js",
     "test": "node --import tsx --test \"src/**/*.test.ts\""
   },
   "repository": {

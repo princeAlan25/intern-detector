@@ -33,6 +33,28 @@ test('GET /health returns 200 OK with status ok', async () => {
   assert.deepStrictEqual(data, { status: 'ok' });
 });
 
+test('GET / serves index.html with HTTP 200', async () => {
+  const res = await fetch(`${baseUrl}/`);
+  assert.strictEqual(res.status, 200);
+  const text = await res.text();
+  assert.ok(text.includes('Fake-Real Detector'));
+  assert.ok(text.includes('id="detector-form"'));
+  assert.ok(text.includes('id="content-input"'));
+  assert.ok(text.includes('id="check-button"'));
+});
+
+test('GET /dist/output.css serves compiled Tailwind CSS with HTTP 200', async () => {
+  const res = await fetch(`${baseUrl}/dist/output.css`);
+  assert.strictEqual(res.status, 200);
+  assert.ok(res.headers.get('content-type')?.includes('text/css'));
+});
+
+test('GET /dist/app.js serves bundled client script with HTTP 200', async () => {
+  const res = await fetch(`${baseUrl}/dist/app.js`);
+  assert.strictEqual(res.status, 200);
+  assert.ok(res.headers.get('content-type')?.includes('javascript'));
+});
+
 test('POST /api/analyze returns 400 Bad Request on empty or missing content', async () => {
   const res = await fetch(`${baseUrl}/api/analyze`, {
     method: 'POST',
