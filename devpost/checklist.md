@@ -39,12 +39,12 @@ Build mode: learn
   Learner check: Paste a suspicious internship message into `http://localhost:3000` and see the red score badge with itemized reasons and evidence, then test a legitimate company posting and see a green score with positive reasons.
   Commit: `feat: render dynamic color-coded score and two-column reasons-evidence grid`
 
-- [ ] **4. AI engine integration with resilient heuristic fallback**
+- [x] **4. AI engine integration with resilient heuristic fallback**
   Becomes usable: The analyzer engine utilizes OpenRouter AI when a `OPENROUTER_API_KEY` is present in `.env` to analyze nuanced phrasing, while seamlessly falling back to the local heuristic engine when offline or if no key is configured.
   Why now: Adds the AI capability specified in the blueprint while guaranteeing the app is completely resilient and never fails during video recording or local testing.
   PRD ref: `prd.md > Features and Behavior > 1. Scam & Legitimacy Evaluation`
   Spec ref: `spec.md > External Services and Dependencies`, `spec.md > Important Failure Modes`, `spec.md > What Was Simplified and Why`
-  Build: Create `src/openrouter.ts` using `openai` (OpenAI-compatible SDK pointed at OpenRouter), connect to `src/analyzer.ts` with structured JSON output, wrapped in a try/catch that automatically defaults to `src/rules.ts`.
+  Build: Create `src/analyzer/openrouter.ts` (using native `fetch` to OpenRouter's OpenAI-compatible endpoint), connect to `src/analyzer/orchestrator.ts` with structured JSON output, wrapped in a try/catch that automatically defaults to `src/analyzer/rules.ts`.
   Verify (mechanical): Run automated test verifying analyzer output with an active key (or mock) and without a key to confirm identical typed `AnalysisResponse` shapes in both cases.
   Learner check: Verify the app runs smoothly with or without an API key, delivering consistent and accurate results.
   Commit: `feat: integrate openrouter ai analysis with automatic heuristic fallback`
