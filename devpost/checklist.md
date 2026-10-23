@@ -19,7 +19,7 @@ Build mode: learn
   Learner check: Run a test curl/request command against `http://localhost:3000/api/analyze` and verify the server outputs a structured JSON response identifying the scam pattern and extracted evidence quotes.
   Commit: `feat: initialize typescript server and core analysis engine with pattern detection`
 
-- [ ] **2. Centered input surface with Tailwind styling and empty guard**
+- [x] **2. Centered input surface with Tailwind styling and empty guard**
   Becomes usable: A clean, centered single-page web interface served at `http://localhost:3000` with the title, subtitle, centered textarea, and "Check" button styled with Tailwind CSS. Clicking "Check" on empty input silently does nothing (no-op). Submitting text initiates the request and shows a "Checking..." state.
   Why now: Connects the browser to the backend and implements the first essential PRD journey steps and edge-case behavior (silent empty input guard).
   PRD ref: `prd.md > Screens and Layout`, `prd.md > Look and Feel`, `prd.md > Features and Behavior > 3. Edge Cases & Input Handling`
