@@ -9,7 +9,7 @@ Build mode: learn
 
 ## Slices
 
-- [ ] **1. Project setup and core analysis engine**
+- [x] **1. Project setup and core analysis engine**
   Becomes usable: A running TypeScript Express backend listening on `http://localhost:3000`, exposing `POST /api/analyze` which evaluates message text or URLs for scam red flags and legitimate trust signals, returning a strictly typed JSON verdict with a score (1–10), summary, and findings containing reasons paired with arrays of evidence.
   Why now: Tackles the project's unique kernel (pattern detection and scoring) and bootstrapping (TypeScript, Express, types, project configuration) first so every subsequent frontend step builds on a working foundation.
   PRD ref: `prd.md > Features and Behavior > 1. Scam & Legitimacy Evaluation` & `2. Side-by-Side Reasons & Evidence`
