@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import { analyzeWithOpenRouter } from '../src/analyzer/openrouter.js';
+import { analyzeWithOpenRouter } from '../backend/src/analyzer/openrouter.js';
 
 dotenv.config();
 
