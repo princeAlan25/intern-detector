@@ -1,10 +1,16 @@
 import { AnalysisRequest, AnalysisResponse } from './types.js';
 
-const API_BASE_URL = typeof window !== 'undefined' && (window as any).API_BASE_URL 
-  ? (window as any).API_BASE_URL 
-  : '';
+export function getApiBaseUrl(): string {
+  if (typeof window === 'undefined') return '';
+  if ((window as any).API_BASE_URL) return (window as any).API_BASE_URL;
+  // If running on a separate frontend dev server port (e.g. 5000, 5173), target the backend at port 3000
+  if (window.location.port && window.location.port !== '3000') {
+    return 'http://localhost:3000';
+  }
+  return '';
+}
 
-export async function analyzeContentApi(content: string, baseUrl = API_BASE_URL): Promise<AnalysisResponse> {
+export async function analyzeContentApi(content: string, baseUrl = getApiBaseUrl()): Promise<AnalysisResponse> {
   const requestBody: AnalysisRequest = { content };
   const endpoint = baseUrl ? `${baseUrl}/api/analyze` : '/api/analyze';
 

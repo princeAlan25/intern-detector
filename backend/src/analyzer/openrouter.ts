@@ -79,9 +79,14 @@ export async function analyzeWithOpenRouter(
       return null;
     }
 
-    // Clean potential markdown fences if present
-    const cleanedJson = rawContent.replace(/^```json\s*/i, '').replace(/```\s*$/i, '').trim();
-    const parsed = JSON.parse(cleanedJson);
+    // Robustly extract JSON object: find first '{' and last '}'
+    let jsonStr = rawContent.trim();
+    const firstBrace = jsonStr.indexOf('{');
+    const lastBrace = jsonStr.lastIndexOf('}');
+    if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
+      jsonStr = jsonStr.substring(firstBrace, lastBrace + 1);
+    }
+    const parsed = JSON.parse(jsonStr);
 
     // Validate and sanitize parsed output
     return sanitizeAiResponse(parsed);

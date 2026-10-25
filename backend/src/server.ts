@@ -6,10 +6,13 @@ import dotenv from 'dotenv';
 import { analyzeContent } from './analyzer/orchestrator.js';
 import { AnalysisRequest } from './types.js';
 
-dotenv.config();
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+// Ensure .env is loaded whether run from workspace root or backend directory
+dotenv.config();
+dotenv.config({ path: path.resolve(__dirname, '../../.env') });
+dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
 export const app = express();
 const PORT = process.env.PORT || 3000;

@@ -75,13 +75,18 @@ export async function analyzeContent(
 
   if (apiKey && apiKey.trim() !== '') {
     try {
+      console.log(`[Analyzer] OPENROUTER_API_KEY detected. Requesting AI analysis via OpenRouter (${process.env.OPENROUTER_MODEL || 'default'})...`);
       const aiResponse = await analyzeWithOpenRouter(content, openRouterConfig);
       if (aiResponse) {
+        console.log(`[Analyzer] ✅ OpenRouter returned valid response: Score ${aiResponse.trustScore}/10 (${aiResponse.verdict})`);
         return aiResponse;
       }
+      console.warn('[Analyzer] OpenRouter returned empty result. Falling back to heuristic rules.');
     } catch (err) {
-      console.warn('OpenRouter analysis failed, engaging heuristic rules fallback:', err);
+      console.warn('[Analyzer] OpenRouter error, falling back to heuristic rules:', err);
     }
+  } else {
+    console.log('[Analyzer] No OPENROUTER_API_KEY found in environment. Using local heuristic rules.');
   }
 
   // Resilient fallback to deterministic rule engine
