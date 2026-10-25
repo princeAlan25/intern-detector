@@ -19,17 +19,10 @@
   </p>
 </div>
 
-<!-- ================================================================= -->
-<!-- 📸 SCREENSHOT / DEMO PLACEHOLDER (USER ACTION REQUIRED)          -->
-<!-- Replace the image path or link below with your actual screenshot -->
-<!-- or animated demo GIF when ready before final submission.        -->
-<!-- ================================================================= -->
 <div align="center">
   <p>
-    <!-- PLACEHOLDER: Replace "resources/app-icon.gif" with your actual screenshot file e.g., "resources/screenshot.png" -->
-    <img src="resources/app-icon.gif" alt="Fake-Real Detector UI Screenshot Placeholder" width="700">
+    <img src="resources/proof/app-overview.png" alt="Fake-Real Detector UI Screenshot Placeholder" width="700">
     <br>
-    <em>📸 <strong>[UI Screenshot Placeholder]</strong>: Place your primary web dashboard screenshot or demonstration GIF here.</em>
   </p>
 </div>
 
