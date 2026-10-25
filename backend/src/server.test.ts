@@ -33,6 +33,14 @@ test('GET /health returns 200 OK with status ok', async () => {
   assert.deepStrictEqual(data, { status: 'ok' });
 });
 
+test('GET / serves frontend index.html with HTTP 200', async () => {
+  const res = await fetch(`${baseUrl}/`);
+  assert.strictEqual(res.status, 200);
+  const html = await res.text();
+  assert.ok(html.includes('Fake-Real Detector'));
+  assert.ok(html.includes('id="detector-form"'));
+});
+
 test('CORS headers are present on requests from isolated frontend', async () => {
   const res = await fetch(`${baseUrl}/health`, {
     headers: { Origin: 'http://localhost:5173' }

@@ -9,6 +9,7 @@
   ],
   "scripts": {
     "start": "npm run start --workspace=backend",
+    "dev": "npm run dev --workspace=backend",
     "dev:backend": "npm run dev --workspace=backend",
     "dev:frontend": "npm run build:css --workspace=frontend && npx serve frontend",
     "build": "npm run build --workspace=frontend",

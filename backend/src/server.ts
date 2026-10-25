@@ -17,7 +17,10 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '../public')));
+
+// Serve static frontend assets if available
+const frontendPath = path.resolve(__dirname, '../../frontend');
+app.use(express.static(frontendPath));
 
 // Health check endpoint
 app.get('/health', (_req: Request, res: Response) => {
