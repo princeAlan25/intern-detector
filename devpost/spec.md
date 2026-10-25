@@ -39,7 +39,7 @@ sequenceDiagram
     Frontend-->>User: Displays results
 ```
 
-![Sequence Diagram](mermaid-diagram.svg)
+![Sequence Diagram](../resources/mermaid-diagram.svg)
 
 1. **User lands on page**: Browser requests `GET /` → Express serves `public/index.html`, Tailwind-compiled stylesheet (`public/dist/output.css`), and the compiled client bundle/script.
 2. **User inputs text/URL & clicks Check**: The client-side TypeScript listener captures the click event.
@@ -183,6 +183,11 @@ intern-detector/
 │   ├── index.html            # Main interface markup
 │   ├── package.json          # Frontend-specific dependencies & build scripts
 │   └── tsconfig.json         # Frontend TypeScript configuration
+├── resources/                # Architectural diagrams and visual design assets
+│   ├── high-level-architecture.png
+│   ├── low-level-architecture.png
+│   ├── full-flowchart.png
+│   └── mermaid-diagram.svg
 ├── scripts/
 │   └── test-openrouter.ts    # Direct OpenRouter connection diagnostic script
 ├── devpost/                  # Hackathon documentation

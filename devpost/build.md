@@ -6,7 +6,7 @@ This document defines the architectural blueprint and step-by-step implementatio
 
 ## 1. System Architecture
 
-![High-Level Architecture](high-level-architecture.png)
+![High-Level Architecture](../resources/high-level-architecture.png)
 
 The application follows a decoupled **Client-Server Architecture** designed for clarity, modularity, and testability.
 
