@@ -7,7 +7,7 @@ export interface OpenRouterConfig {
   fetchFn?: typeof fetch;
 }
 
-const DEFAULT_MODEL = 'meta-llama/llama-3.3-70b-instruct';
+const DEFAULT_MODEL = 'baseten/elephant-1:free';
 const DEFAULT_API_URL = 'https://openrouter.ai/api/v1/chat/completions';
 
 const SYSTEM_PROMPT = `
