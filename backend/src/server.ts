@@ -21,10 +21,17 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-// Serve the favicon from its source asset in resources
+// Serve the favicon and app icon from resources
 app.get('/favicon.gif', (_req: Request, res: Response) => {
   res.sendFile(path.resolve(__dirname, '../../resources/app-icon.gif'));
 });
+
+app.get('/app-icon.gif', (_req: Request, res: Response) => {
+  res.sendFile(path.resolve(__dirname, '../../resources/app-icon.gif'));
+});
+
+// Serve static resources directory
+app.use('/resources', express.static(path.resolve(__dirname, '../../resources')));
 
 // Serve static frontend assets if available
 const frontendPath = path.resolve(__dirname, '../../frontend');

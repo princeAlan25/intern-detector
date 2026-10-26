@@ -33,12 +33,28 @@ test('GET /health returns 200 OK with status ok', async () => {
   assert.deepStrictEqual(data, { status: 'ok' });
 });
 
-test('GET / serves frontend index.html with HTTP 200', async () => {
+test('GET / serves frontend index.html with HTTP 200 and includes app logo', async () => {
   const res = await fetch(`${baseUrl}/`);
   assert.strictEqual(res.status, 200);
   const html = await res.text();
   assert.ok(html.includes('Fake-Real Detector'));
   assert.ok(html.includes('id="detector-form"'));
+  assert.ok(html.includes('src="/resources/app-icon.gif"'));
+  assert.ok(html.includes('alt="Fake-Real Detector Logo"'));
+});
+
+test('GET /resources/app-icon.gif, /app-icon.gif, and /favicon.gif return 200 with image/gif', async () => {
+  const resourceRes = await fetch(`${baseUrl}/resources/app-icon.gif`);
+  assert.strictEqual(resourceRes.status, 200);
+  assert.strictEqual(resourceRes.headers.get('content-type'), 'image/gif');
+
+  const iconRes = await fetch(`${baseUrl}/app-icon.gif`);
+  assert.strictEqual(iconRes.status, 200);
+  assert.strictEqual(iconRes.headers.get('content-type'), 'image/gif');
+
+  const faviconRes = await fetch(`${baseUrl}/favicon.gif`);
+  assert.strictEqual(faviconRes.status, 200);
+  assert.strictEqual(faviconRes.headers.get('content-type'), 'image/gif');
 });
 
 test('CORS headers are present on requests from isolated frontend', async () => {
