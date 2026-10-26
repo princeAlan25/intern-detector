@@ -342,6 +342,5 @@ Distributed under the **MIT License**. See [LICENSE](LICENSE) for full details.
 
 ## Contact
 
-* **Maintainer:** Prince Alain Loui ([princealainloui@gmail.com](mailto:princealainloui@gmail.com))
+* **Maintainer:** Prince Alain Loui ([prince.alain.loui@gmail.com](mailto:prince.alain.loui@gmail.com))
 * **GitHub Repository:** [princeAlan25/intern-detector](https://github.com/princeAlan25/intern-detector)
-* **Discussions & Ideas:** [GitHub Discussions](https://github.com/princeAlan25/intern-detector/discussions)
